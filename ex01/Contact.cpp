@@ -6,15 +6,32 @@
 /*   By: slouham <slouham@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 18:06:29 by slouham           #+#    #+#             */
-/*   Updated: 2024/12/13 23:25:38 by slouham          ###   ########.fr       */
+/*   Updated: 2024/12/14 11:32:05 by slouham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 #include <iostream>
 
-Contact::Contact() {
-    // Initialize member variables if needed
+bool Contact::isEmpty() const
+{
+    return first_name.empty() && last_name.empty() && nickname.empty();
+}
+
+std::string Contact::get_first_name() const {
+    return first_name;
+}
+
+std::string Contact::get_last_name() const {
+    return last_name;
+}
+
+std::string Contact::get_nickname() const {
+    return nickname;
+}
+
+Contact::Contact()
+{
     first_name = "";
     last_name = "";
     nickname = "";
@@ -22,8 +39,9 @@ Contact::Contact() {
     darkest_secret = "";
 }
 
-Contact::~Contact() {
-    // Any cleanup if necessary, although nothing is required here as of now
+Contact::~Contact() 
+{
+    
 }
 
 void Contact::set_contact()
@@ -36,18 +54,25 @@ void Contact::set_contact()
 
     std::cout << "Enter Nickname: ";
     std::getline(std::cin, nickname);
-
+    
     std::cout << "Enter Phone Number: ";
     std::getline(std::cin, phone_number);
-
+    if (phone_number.empty())
+    {
+        std::cout << "Invalid Phone Number. Enter again: ";
+        std::getline(std::cin, phone_number);
+    }
     std::cout << "Enter Darkest Secret: ";
     std::getline(std::cin, darkest_secret);
+
+    std::cout << GREEN << "Contact added sucsessfully" << RESET;
 }
 
-void Contact::get_contact()
+void Contact::display_contact() const
 {
-    std::cout << first_name << " | "
-             << last_name << " | "
-             << nickname << std::endl;
-                
+    std::cout << "\nFirst Name: " << first_name << std::endl;
+    std::cout << "Last Name: " << last_name << std::endl;
+    std::cout << "Nickname: " << nickname << std::endl;
+    std::cout << "Phone Number: " << phone_number << std::endl;
+    std::cout << "Darkest Secret: " << darkest_secret << std::endl;
 }

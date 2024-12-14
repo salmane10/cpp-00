@@ -6,25 +6,26 @@
 /*   By: slouham <slouham@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 22:46:36 by slouham           #+#    #+#             */
-/*   Updated: 2024/12/13 23:05:36 by slouham          ###   ########.fr       */
+/*   Updated: 2024/12/14 11:30:05 by slouham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "PhoneBook.hpp"
 #include <iostream>
 #include <string>
-#include "PhoneBook.hpp"
 
 int main(void)
 {
     PhoneBook phonebook;
     std::string command;
     
-    std::cout << "Welcome to your PhoneBook" << std::endl;
+    std::cout << GREEN << "Welcome to your PhoneBook" << RESET << std::endl;
+    
     while (true)
     {
         std::cout << "\nEnter a command (ADD, SEARCH, EXIT): ";
         std::getline(std::cin, command);
-
+        
         if (command == "ADD")
         {
             phonebook.add_new();
@@ -33,13 +34,13 @@ int main(void)
         {
             phonebook.search();
         }
-        else if (command == "EXIT")
+        else if (command == "EXIT" || std::cin.eof())
         {
-            std::cout << "Exiting PhoneBook. Goodbye" << std::endl;
+            std::cout << "\nExiting PhoneBook...\nGoodbye" << std::endl;
             break;
         }
         else
-            std::cout << "Invalid command. Please try again." << std::endl;
+            std::cout << RED << "Invalid command. Please try again." << RESET << std::endl;
     }
     return (0);
 }
