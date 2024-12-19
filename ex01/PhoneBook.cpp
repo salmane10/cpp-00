@@ -6,7 +6,7 @@
 /*   By: slouham <slouham@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 15:47:58 by slouham           #+#    #+#             */
-/*   Updated: 2024/12/19 17:55:19 by slouham          ###   ########.fr       */
+/*   Updated: 2024/12/19 20:43:18 by slouham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,15 @@ void PhoneBook::search()
 
         if (line.empty())
         {
-            std::cout << "No input provided !\n";
+            std::cout << "No input provided !";
             continue;
         }
-
+        
+        if (line.length() != 1 || !isdigit(line[0]))
+        {
+            std::cout << "Invalid: accept only and one digit !";
+            continue;
+        }
         index = std::atoi(line.c_str());
 
         if (index >= 0 && index < max_contact)
@@ -93,7 +98,7 @@ void PhoneBook::search()
         }
         else
         {
-            std::cout << "Invalid index! Please try again" << std::endl;
+            std::cout << "No contact found! Please try again";
         }
     }
 }
