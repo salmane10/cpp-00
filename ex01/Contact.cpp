@@ -6,12 +6,11 @@
 /*   By: slouham <slouham@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 18:06:29 by slouham           #+#    #+#             */
-/*   Updated: 2024/12/14 11:32:05 by slouham          ###   ########.fr       */
+/*   Updated: 2024/12/19 17:58:41 by slouham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
-#include <iostream>
 
 bool Contact::isEmpty() const
 {
@@ -46,33 +45,79 @@ Contact::~Contact()
 
 void Contact::set_contact()
 {
+    
     std::cout << "Enter First Name: ";
     std::getline(std::cin, first_name);
-
+    if (std::cin.eof())
+        std::exit(0);
+    while (first_name.empty())
+    {
+        if (std::cin.eof())
+            std::exit(0);
+        std::cout << "Cannot add empty argument" << std::endl;
+        std::cout << "Enter First Name: ";
+        std::getline(std::cin, first_name);
+    }
+   
     std::cout << "Enter Last Name: ";
     std::getline(std::cin, last_name);
+    if (std::cin.eof())
+        std::exit(0);
+    while (last_name.empty())
+    {
+        if (std::cin.eof())
+            std::exit(0);
+        std::cout << "Cannot add empty argument" << std::endl;
+        std::cout << "Enter Last Name: ";
+        std::getline(std::cin, last_name);
+    }
 
     std::cout << "Enter Nickname: ";
     std::getline(std::cin, nickname);
-    
+    if (std::cin.eof())
+        std::exit(0);
+    while (nickname.empty())
+    {
+        if (std::cin.eof())
+            std::exit(0);
+        std::cout << "Cannot add empty argument" << std::endl;
+        std::cout << "Enter Nickname: ";
+        std::getline(std::cin, nickname);
+    }
+
     std::cout << "Enter Phone Number: ";
     std::getline(std::cin, phone_number);
-    if (phone_number.empty())
+    if (std::cin.eof())
+        std::exit(0);
+    while (phone_number.empty())
     {
-        std::cout << "Invalid Phone Number. Enter again: ";
+        if (std::cin.eof())
+            std::exit(0);
+        std::cout << "Cannot add empty argument" << std::endl;
+        std::cout << "Enter Phone Number: ";
         std::getline(std::cin, phone_number);
     }
+
     std::cout << "Enter Darkest Secret: ";
     std::getline(std::cin, darkest_secret);
-
-    std::cout << GREEN << "Contact added sucsessfully" << RESET;
+    if (std::cin.eof())
+        std::exit(0);
+    while (darkest_secret.empty())
+    {
+        if (std::cin.eof())
+            std::exit(0);
+        std::cout << "Cannot add empty argument" << std::endl;
+        std::cout << "Enter Darkest Secret: ";
+        std::getline(std::cin, darkest_secret);
+    }
+    std::cout << "added sucsessfully";
 }
 
 void Contact::display_contact() const
 {
-    std::cout << "\nFirst Name: " << first_name << std::endl;
-    std::cout << "Last Name: " << last_name << std::endl;
-    std::cout << "Nickname: " << nickname << std::endl;
-    std::cout << "Phone Number: " << phone_number << std::endl;
+    std::cout << "\nFirst Name    : " << first_name << std::endl;
+    std::cout << "Last Name     : " << last_name << std::endl;
+    std::cout << "Nickname      : " << nickname << std::endl;
+    std::cout << "Phone Number  : " << phone_number << std::endl;
     std::cout << "Darkest Secret: " << darkest_secret << std::endl;
 }

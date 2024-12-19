@@ -6,7 +6,7 @@
 /*   By: slouham <slouham@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 18:06:25 by slouham           #+#    #+#             */
-/*   Updated: 2024/12/14 11:13:53 by slouham          ###   ########.fr       */
+/*   Updated: 2024/12/19 17:50:32 by slouham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 #define CONTACT_HPP
 
 #include <iostream>
-
-#define RESET "\033[0m"
-#define GREEN "\033[32m"
-#define RED "\033[31m"
+#include <cstring>
+#include <cstdlib>
+#include <iomanip>
 
 class Contact
 {

@@ -6,20 +6,18 @@
 /*   By: slouham <slouham@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 22:46:36 by slouham           #+#    #+#             */
-/*   Updated: 2024/12/14 11:30:05 by slouham          ###   ########.fr       */
+/*   Updated: 2024/12/19 17:57:06 by slouham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-#include <iostream>
-#include <string>
 
 int main(void)
 {
     PhoneBook phonebook;
     std::string command;
     
-    std::cout << GREEN << "Welcome to your PhoneBook" << RESET << std::endl;
+    std::cout << "Welcome to PhoneBook" << std::endl;
     
     while (true)
     {
@@ -36,11 +34,11 @@ int main(void)
         }
         else if (command == "EXIT" || std::cin.eof())
         {
-            std::cout << "\nExiting PhoneBook...\nGoodbye" << std::endl;
+            std::cout << "\nGoodbye!" << std::endl;
             break;
         }
         else
-            std::cout << RED << "Invalid command. Please try again." << RESET << std::endl;
+            std::cout << "ERROR: invalid command! try again";
     }
     return (0);
 }
